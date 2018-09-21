@@ -20,7 +20,7 @@ class Player:
             print "jaj", e
             return (None, 0)
 
-    def get_data(game_state):
+    def get_data(self, game_state):
         print "Game state:", game_state
         current_buy_in = game_state["current_buy_in"]
         players = game_state["players"]
@@ -39,7 +39,7 @@ class Player:
         return (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money)
 
     def betRequest(self, game_state):
-        (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money) = get_data(game_state)
+        (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money) = self.get_data(game_state)
         (best_hand, rank) = self.get_ranking(own_cards, community_cards)
         bet = current_buy_in - bet
         if best_hand:
