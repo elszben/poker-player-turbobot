@@ -71,7 +71,8 @@ def get_preflop_bet(current_money, result, cards, min_raise):
         card_sum += card_value[card["rank"]]
 
     if cards[0]["rank"]==cards[1]["rank"]:
-        return result + (min_raise if card_sum>=20 else 0)
+        x = result + (min_raise if card_sum>=20 else 0)
+        return x if x<=current_money else result
     else:
         ra = 200 * card_sum // max_preflop_sum
         return result if ra>=result else 0
