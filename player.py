@@ -2,13 +2,13 @@ import urllib2
 import json
 
 class Player:
-    VERSION = "TurboBot 4"
+    VERSION = "TurboBot 5"
 
     def get_ranking(self, own_cards, community_cards):
         all_cards = own_cards + community_cards
         try:
             data = "cards=%s" % json.dumps(all_cards)
-            #print "data:", data
+            print "Ranking request:", data
             contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", "%s" % data).read()
             #print "Ranking result", contents
             response = json.loads(contents)
