@@ -59,7 +59,7 @@ def get_bet(current_money, result, cards, rank):
     elif r<=(chance[0] + chance[1]):
         return result if result<=max_raise else 0
     else:
-        return max_raise * r1 // 1000
+        return result + max_raise * r1 // 1000
 
 if __name__=="__main__":
     print get_bet(1000, 200, [{"rank":"8","suit":"hearts"},
