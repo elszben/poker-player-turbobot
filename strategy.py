@@ -16,7 +16,7 @@ odds = [
 bet_chance = [
     [100, 0, 0, 0],
     [80, 20, 0, 0],
-    [30, 30, 40, 100],
+    [30, 30, 40, 50],
     [10, 40, 50, 100],
     [5, 45, 50, 200],
     [0, 50, 50, 200],
@@ -60,7 +60,7 @@ def get_bet(current_money, result, cards, rank, min_raise):
     elif r<=(chance[0] + chance[1]):
         return result if result<=max_raise else 0
     else:
-        ra = max_raise * r1 // current_money
+        ra = max_raise * r1 // 1000
         return result + (ra if ra>=min_raise else 0)
 
 if __name__=="__main__":
