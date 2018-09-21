@@ -4,7 +4,7 @@ import json
 class Player:
     VERSION = "TurboBot 4"
 
-    def get_ranking(own_cards, community_cards):
+    def get_ranking(self, own_cards, community_cards):
         all_cards = own_cards + community_cards
         try:
             data = "cards=%s" % json.dumps(all_cards)
@@ -30,7 +30,7 @@ class Player:
                 result = current_buy_in - player["bet"]
                 own_cards = player["hole_cards"]
         community_cards = game_state["community_cards"]
-        best_hand = get_ranking(own_cards, community_cards)
+        best_hand = self.get_ranking(own_cards, community_cards)
         if best_hand:
             print "best_hand", best_hand
         return result
