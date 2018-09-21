@@ -15,7 +15,7 @@ class Player:
         table_cards = game_state["community_cards"]
         all_cards = own_cards + table_cards
         try:
-            contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", "%s" % all_cards).read()
+            contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", "cards=%s" % all_cards).read()
             print "Ranking result", contents
         except Exception as e:
             print "jaj", e
