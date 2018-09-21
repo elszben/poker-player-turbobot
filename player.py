@@ -1,4 +1,3 @@
-import urllib2
 
 class Player:
     VERSION = "TurboBot 1"
@@ -8,17 +7,11 @@ class Player:
         current_buy_in = game_state["current_buy_in"]
         players = game_state["players"]
         own_id = game_state["in_action"]
-        own_cards = []
-        result = 0
         for player in players:
             if player["id"] == own_id:
-                result = current_buy_in - player["bet"]
-                own_cards = player["hole_cards"]
-        table_cards = game_state["community_cards"]
-        all_cards = own_cards + table_cards
-        contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", all_cards).read()
-        print "Ranking result", contents
-        return result
+                call_value = current_buy_in - player["bet"]
+                return call_value
+        return 0
 
     def showdown(self, game_state):
         pass
