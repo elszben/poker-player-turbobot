@@ -34,6 +34,8 @@ class Player:
         best_hand = self.get_ranking(own_cards, community_cards)
         if best_hand:
             print "best_hand", best_hand
+        if result == 0:
+            return 3;
         return result
 
     def showdown(self, game_state):
