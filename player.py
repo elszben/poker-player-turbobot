@@ -43,9 +43,9 @@ class Player:
         (best_hand, rank) = self.get_ranking(own_cards, community_cards)
         bet = current_buy_in - bet
         if best_hand:
-            bet = strategy.get_bet(current_money, current_buy_in, best_hand, rank, minimum_raise)
+            bet = strategy.get_bet(current_money, current_buy_in - bet, best_hand, rank, minimum_raise)
         else:
-            bet = strategy.get_preflop_bet(current_money, current_buy_in, own_cards, minimum_raise)
+            bet = strategy.get_preflop_bet(current_money, current_buy_in - bet, own_cards, minimum_raise)
         print "Final bet:", bet
         return bet
 
