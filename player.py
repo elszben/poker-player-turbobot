@@ -1,7 +1,7 @@
 import urllib2
 
 class Player:
-    VERSION = "TurboBot 2"
+    VERSION = "TurboBot 3"
 
     def betRequest(self, game_state):
         print "Game state:", game_state
@@ -15,7 +15,9 @@ class Player:
         table_cards = game_state["community_cards"]
         all_cards = own_cards + table_cards
         try:
-            contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", "cards=%s" % all_cards).read()
+            data = "cards=%s" % all_cards
+            print "data:", data
+            contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", "%s" % data).read()
             print "Ranking result", contents
         except Exception as e:
             print "jaj", e
