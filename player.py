@@ -1,4 +1,5 @@
 import urllib2
+import json
 
 class Player:
     VERSION = "TurboBot 3"
@@ -15,7 +16,7 @@ class Player:
         table_cards = game_state["community_cards"]
         all_cards = own_cards + table_cards
         try:
-            data = "cards=%s" % all_cards
+            data = "cards=%s" % json.dumps(all_cards)
             print "data:", data
             contents = urllib2.urlopen("http://rainman.leanpoker.org/rank", "%s" % data).read()
             print "Ranking result", contents
