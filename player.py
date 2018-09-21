@@ -3,7 +3,7 @@ import json
 import strategy
 
 class Player:
-    VERSION = "TurboBot 5"
+    VERSION = "TurboBot 3000"
 
     def get_ranking(self, own_cards, community_cards):
         all_cards = own_cards + community_cards
