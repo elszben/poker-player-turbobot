@@ -36,16 +36,16 @@ class Player:
                 current_money = player["stack"]
                 own_cards = player["hole_cards"]
         community_cards = game_state["community_cards"]
-        return (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money)
+        return (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money, own_cards)
 
     def betRequest(self, game_state):
-        (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money) = self.get_data(game_state)
+        (current_buy_in, bet, own_cards, community_cards, minimum_raise, current_money, own_cards) = self.get_data(game_state)
         (best_hand, rank) = self.get_ranking(own_cards, community_cards)
         bet = current_buy_in - bet
         if best_hand:
             bet = strategy.get_bet(current_money, current_buy_in - bet, best_hand, rank, minimum_raise)
-        elif bet>50:
-            bet = 0
+        else:
+            bet = strategy.get_preflop_bet(current_money, current_buy_in - bet, own_cards, minimum_raise)
         print "Final bet:", bet
         return bet
 
