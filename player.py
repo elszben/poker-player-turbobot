@@ -44,6 +44,8 @@ class Player:
         bet = current_buy_in - bet
         if best_hand:
             bet = strategy.get_bet(current_money, current_buy_in - bet, best_hand, rank, minimum_raise)
+        elif bet>50:
+            bet = 0
         print "Final bet:", bet
         return bet
 
