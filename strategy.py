@@ -66,7 +66,6 @@ def get_bet(current_money, result, cards, rank, min_raise):
 max_preflop_sum=28
 
 def get_preflop_bet(current_money, result, cards, min_raise):
-    print "get_preflop_bet", current_money, result, cards, min_raise
     card_sum = 0
     for card in cards:
         card_sum += card_value[card["rank"]]
@@ -74,6 +73,7 @@ def get_preflop_bet(current_money, result, cards, min_raise):
     max_value = max(card_value[cards[0]["rank"]],
                     card_value[cards[1]["rank"]])
 
+    print "get_preflop_bet", current_money, result, cards, min_raise, max_value
 
     if cards[0]["rank"]==cards[1]["rank"]:
         x = result + (min_raise if card_sum>=20 else 0)
