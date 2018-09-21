@@ -25,6 +25,7 @@ class Player:
         own_id = game_state["in_action"]
         own_cards = []
         community_cards = []
+        result = 0
         for player in players:
             if player["id"] == own_id:
                 result = current_buy_in - player["bet"]
